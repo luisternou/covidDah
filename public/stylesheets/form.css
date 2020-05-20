@@ -1,0 +1,20 @@
+.form-container {
+  max-width: 480px;
+  margin: 50px auto;
+  background: #D0D0D0#5D5C61;
+  border-radius: 0px; 
+  padding: 10px;
+}
+
+.form-container form {
+  padding: 25px 5px;
+  background: #ffffff;
+  color: #5D5C61;
+}
+
+.half-column {
+  width: 49%;
+}
+.login-button {
+  width: 100%;
+}

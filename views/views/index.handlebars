@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>KirEx - Dashboard</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.15.5/dist/xlsx.full.min.js"></script>
+   <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <div class="sidebar-brand-icon rotate-n-15">
+         
+        </div>
+        <div class="sidebar-brand-text mx-3">KirEx <sup>Admin</sup></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="/">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Interface
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-clipboard-check"></i>
+          <span>Hira</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Hira functions:</h6>
+            <a class="collapse-item" href="/hira">Get all submissions</a>
+            <a class="collapse-item" href="" data-toggle="modal" data-target="#hiraFilterModal">Filter submissions</a>
+          </div>
+        </div>
+      </li>
+
+     
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      
+
+      <!-- Nav Item - Incidents -->
+      <li class="nav-item">
+        <a class="nav-link" href="/incidents">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>Incidents</span></a>
+      </li>
+
+     
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/filterHira" method="GET">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" name="name"  placeholder="Filter Hira submissions by Name" aria-label="Search" aria-describedby="basic-addon2">
+              <input type="hidden" class="form-control bg-light border-0 small" name="projectNumber"  placeholder="Filter Hira submissions by Name" aria-label="Search" aria-describedby="basic-addon2">
+              <input type="hidden" class="form-control bg-light border-0 small" name="area"  placeholder="Filter Hira submissions by Name" aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search" action="/filterHira" action="GET">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" name="name" placeholder="Filter Hira submissions by Name" aria-label="Search" aria-describedby="basic-addon2">
+                     <input type="hidden" class="form-control bg-light border-0 small" name="projectNumber"  placeholder="Filter Hira submissions by Name" aria-label="Search" aria-describedby="basic-addon2">
+              <input type="hidden" class="form-control bg-light border-0 small" name="area"  placeholder="Filter Hira submissions by Name" aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+          
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.name}}</span>
+                <img class="img-profile rounded-circle" src="https://ui-avatars.com/api/?name={{user.name}}">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+               
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+             <button id="button-a" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> <i class="fas fa-download fa-sm text-white-50"> </i> Generate Report</button>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Hira Count -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Hira submissions</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{countHira.count}}</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-check fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Total Incident submissions</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{countIncident.count}}</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Last month Hira submissions</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{hiraLastMonth.count}}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Last month Incident submissions</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{incidentsLastMonth.count}}</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-exclamation-circle fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+
+          <div class="row">
+
+            <!-- Area Chart Hira -->
+            <div class="col-xl-8 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Hira Submissions</h6>
+                  
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="hiraChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">KirEx usage</h6>
+                  
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                  <div class="mt-4 text-center small">
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-primary"></i> Hira Submissions
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-danger"></i> Incidents
+                    </span>
+                
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Incident Submission</h6>
+                </div>
+                <div class="card-body">
+               <div class="chart-area">
+                    <canvas id="incidentChart"></canvas>
+                  </div>
+                </div>
+              </div>
+
+           
+
+            </div>
+
+            <div class="col-lg-6 mb-4">
+
+              
+
+              <!-- About -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">About KirEx</h6>
+                </div>
+                <div class="card-body">
+                  <p>KirEx is a new approach to Risk management and safety-related incidents reporting without the need for Paper reports. </p>
+                  <p class="mb-0">Every employee has an account on the user portal <a  target="_blank" href="hira:5000">found here</a> where they submit the Risk and/or Incident reports.</p>
+                  <p class="mb-0">As an admin you have an extensive overview of what had been submitted. You can view individual submissions on this platform or export the dataset as an <code>Excel</code> file for further processing by clicking the <code>Generate Report</code> above or in the <code>Hira/Incident</code> page</p>
+                <p class="mb-0">Should you experience technical difficulties, drop us a line on <a href="mailto:kirex@vitomilix-webdesign.com?subject=You are the best, but... [Insert Problem here]&body=Hi guys, %0D%0A Love KirEx but it seems to be that you missed a spot, can you please fix it. [INSERT PROBLEM HERE]%0D%0ALove you%0D%0A%0D%0A-me">kirex@vitomilix-webdesign.com</a> or contact Deon Lorentan.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+         <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <p id="copyright"><div>
+                <script type="text/JavaScript"> 
+                let theDate = new Date();
+                let currYear = theDate.getFullYear();
+              document.getElementById("copyright").innerHTML = "Copyright ©&nbsp;Vitomilix " + currYear;
+            </script></div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="/users/logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Hira Filter Modal Modal-->
+  <div class="modal fade" id="hiraFilterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">How do you want to filter Hira results</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+<form id="modalForm" action="/filterHira" method="GET">
+            <div class="form-group">
+              <input type="text" class="form-control bg-light border-0 small" name="name"  placeholder="Filter by Name" aria-label="Search" aria-describedby="basic-addon2">
+            </div>
+            <div class="form-group">
+            <input type="text" class="form-control bg-light border-0 small" name="projectNumber"  placeholder="Filter by Project Number" aria-label="Search" aria-describedby="basic-addon2">
+             
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control bg-light border-0 small" name="area"  placeholder="Filter by Area" aria-label="Search" aria-describedby="basic-addon2">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-md" type="submit">
+                  Search
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+             
+            </div>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js" hiraCount="{{hiraMonthsCount}}" incidentCount="{{incidentMonthsCount}}"></script>
+  <script  hira = "{{countHira.count}}" incidents = "{{countIncident.count}}"  src="js/demo/chart-pie-demo.js"></script>
+
+
+{{!-- create XLSX Report --}}
+<script data="{{hiraResultRawString}}">
+  let data = document.currentScript.getAttribute('data');
+
+let jsonData = JSON.parse(data);
+
+
+
+let today = new Date();
+let day = String(today.getDate()).padStart(2, '0');
+let month = String(today.getMonth() + 1).padStart(2, '0'); 
+let year = today.getFullYear();
+
+let filename = "Hira-Export-" + day + "-" + month + "-" + year + ".xlsx";
+
+        var wb = XLSX.utils.book_new();
+        wb.Props = {
+                Title: "Hira Export",
+                Subject: "Export of Hira Records",
+                Author: "KirEx",
+                CreatedDate: new Date(year,month,day)
+        };
+        
+        wb.SheetNames.push("Hira Export");
+        var ws_data = [['hello' , 1]]; ;
+       var ws = XLSX.utils.json_to_sheet(jsonData);
+        wb.Sheets["Hira Export"] = ws;
+        var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+        function s2ab(s) {
+  
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+                
+        }
+        $("#button-a").click(function(){
+                saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), filename);
+        });
+  
+</script>
+
+
+
+
+</body>
+
+</html>

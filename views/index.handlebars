@@ -61,7 +61,8 @@
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js" deaths = "{{latest_summary.Deaths}}" recoveries = "{{latest_summary.Recovered}}"></script>
+<script src="dist/js/pages/dashboard.js" deaths = "{{latest_summary.Deaths}}" recoveries = "{{latest_summary.Recovered}}"
+provinces_confirmed = {{latest_provinces_confirmed}}></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 
@@ -753,7 +754,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
+                  Closed Cases
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">

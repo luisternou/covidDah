@@ -1,4 +1,7 @@
 const https = require('https');
+const request = require('request');
+const got = require('got');
+const csv = require("async-csv")
 module.exports = {
  
 
@@ -6,6 +9,8 @@ module.exports = {
     try {
       const API_URL = 'https://api.covid19api.com/dayone/country/south-africa';
       const TIME_API_URL = 'https://worldtimeapi.org/api/timezone/Africa/Johannesburg';
+
+
 
         let title = "Welcome to the SA Covid-19 Dashboard";
     
@@ -32,14 +37,32 @@ module.exports = {
       }
 
 
-      
-      
-
-  
      
-      (async() => {
 
 
+//let parsedObject = await csv.parse(request.get("https://raw.githubusercontent.com/dsfsi/covid19za/master/data/covid19za_provincial_cumulative_timeline_confirmed.csv"));
+      
+
+ 
+  (async() => {
+    let csv_content;
+         try {
+        const response = await got('https://raw.githubusercontent.com/dsfsi/covid19za/master/data/covid19za_provincial_cumulative_timeline_confirmed.csv');
+        //console.log(response.body);
+        csv_content = response.body;
+        //=> '<!doctype html> ...'
+    } catch (error) {
+        console.log(error.response.body);
+        //=> 'Internal server error ...'
+    }
+  
+  let latest_provinces_confirmed = await csv.parse(csv_content);
+
+ latest_provinces_confirmed = latest_provinces_confirmed
+[latest_provinces_confirmed.length-1];
+
+
+     
 
       let summary = await getSummary(API_URL);
       let time_response = await getSummary(TIME_API_URL);
@@ -104,6 +127,7 @@ module.exports = {
         deaths_up,
         sign,
         year,
+        latest_provinces_confirmed,
         title
     
     

@@ -22,13 +22,13 @@ const errorController = require('./controllers/error');
 app.engine('handlebars', exphbs({ default: 'main' }));
 app.set('view engine', 'handlebars');
 
-csvToJson().fromStream(request.get("https://raw.githubusercontent.com/dsfsi/covid19za/master/data/lockdown/covid19za_provincial_cumulative_timeline_lockdown.csv"))
-    .then(source => {
-        console.log(source);
+// csvToJson().fromStream(request.get("https://raw.githubusercontent.com/dsfsi/covid19za/master/data/lockdown/covid19za_provincial_cumulative_timeline_lockdown.csv"))
+//     .then(source => {
+//         console.log(source);
 
-    });
+//     });
 // Include routers
-//const homeRoutes = require('./routes/home');
+const homeRoutes = require('./routes/home');
 
 // Set up server related variable
 // TODO Change to port 80
@@ -58,7 +58,7 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
 // home route
-//app.use('/', homeRoutes);
+app.use('/', homeRoutes);
 
 app.use(errorController.getError);
 

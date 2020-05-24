@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
-const csvToJson = require('csvtojson');
 const request = require("request");
 
 // set up session
@@ -22,11 +21,7 @@ const errorController = require('./controllers/error');
 app.engine('handlebars', exphbs({ default: 'main' }));
 app.set('view engine', 'handlebars');
 
-// csvToJson().fromStream(request.get("https://raw.githubusercontent.com/dsfsi/covid19za/master/data/lockdown/covid19za_provincial_cumulative_timeline_lockdown.csv"))
-//     .then(source => {
-//         console.log(source);
 
-//     });
 // Include routers
 const homeRoutes = require('./routes/home');
 

@@ -56,11 +56,56 @@ module.exports = {
         console.log(error.response.body);
         //=> 'Internal server error ...'
     }
+
+    let csv_lockdown;
+         try {
+        const response = await got('https://raw.githubusercontent.com/dsfsi/covid19za/master/data/lockdown/covid19za_provincial_cumulative_timeline_lockdown.csv');
+        //console.log(response.body);
+        csv_lockdown = response.body;
+        //=> '<!doctype html> ...'
+    } catch (error) {
+        console.log(error.response.body);
+        //=> 'Internal server error ...'
+    }
   
   let latest_provinces_confirmed = await csv.parse(csv_content);
-
+  let lockdown = await csv.parse(csv_lockdown)
  latest_provinces_confirmed = latest_provinces_confirmed
 [latest_provinces_confirmed.length-1];
+
+
+ lockdown = lockdown[lockdown.length-1][2];
+ lockdown = parseInt(lockdown)
+ let lockdown_colour;
+
+ console.log(typeof lockdown);
+ 
+
+switch (lockdown) {
+  case 1:
+    lockdown_colour ="succsess";
+    break;
+
+     case 2:
+    lockdown_colour ="info";
+    break;
+
+     case 3:
+    lockdown_colour ="primary";
+    break;
+
+     case 4:
+    lockdown_colour ="warning";
+    break;
+     case 5:
+    lockdown_colour ="danger";
+    break;
+
+  default:
+  lockdown_colour ="light";
+    break;
+}
+
 
 
      let latest_data = await getSummary(API_URL);
@@ -129,6 +174,8 @@ module.exports = {
         sign,
         year,
         latest_provinces_confirmed,
+        lockdown,
+        lockdown_colour,
         title
     
     

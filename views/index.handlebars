@@ -913,7 +913,7 @@ provinces_confirmed = {{latest_provinces_confirmed}}></script>
           <section class="col-lg-5 connectedSortable">
 
             <!-- Map card -->
-            <div class="card bg-gradient-primary">
+            <div class="card bg-gradient-secondary">
               <div class="card-header border-0">
                 <h3 class="card-title">
                   <i class="fas fa-map-marker-alt mr-1"></i>
@@ -924,7 +924,7 @@ provinces_confirmed = {{latest_provinces_confirmed}}></script>
                  
                   
                   <button type="button"
-                          class="btn btn-primary btn-sm"
+                          class="btn btn-secondary btn-sm"
                           data-card-widget="collapse"
                           data-toggle="tooltip"
                           title="Collapse">
@@ -1093,6 +1093,38 @@ provinces_confirmed = {{latest_provinces_confirmed}}></script>
   </div>
 
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+      if (sessionStorage.getItem('#betaMessage') !== 'true') {
+        $('#betaMessage').modal('show');
+        sessionStorage.setItem('#betaMessage', 'true');
+      }
+    });
+</script>
+
+
+<!-- Modal -->
+<div class="modal fade" id="betaMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Hold on, I'm not finished yet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        No idea how you got hold of this tremendous Website, but I am still working on it, and it should be done soon.
+        <br>
+Some features work already like the summary at the top and the map but some are still a work in progress, pop round in a few days time, I may have finished by then.
+      Thanks for your understanding. 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok, Ek verstaan</button>
+        {{!-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+      </div>
+    </div>
+  </div>
 
 
 </body>

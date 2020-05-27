@@ -24,7 +24,6 @@ var provinces_confirmed_updated = provinces_confirmed_updated.map(function (x) {
 
 
 
-
 $(function () {
 
   'use strict'
@@ -86,7 +85,7 @@ $(function () {
     map              : 'za_mill',
     backgroundColor  : 'transparent',
      focusOn: {
-       x: 0.6,
+       x: 0.9,
        y: 0.2,
        scale: 2
      },

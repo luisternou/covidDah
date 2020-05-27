@@ -61,7 +61,7 @@
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js" deaths = "{{latest_summary.Deaths}}" recoveries = "{{latest_summary.Recovered}}"
+<script src="dist/js/pages/dashboard.js" deaths = "{{latest_data.deaths}}" recoveries = "{{latest_data.recovered}}"
 provinces_confirmed = {{latest_provinces_confirmed}}></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
@@ -690,7 +690,7 @@ provinces_confirmed = {{latest_provinces_confirmed}}></script>
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{latest_summary.Confirmed}}</h3>
+                <h3>{{latest_data.cases}}</h3>
                 <p> +{{confirmed_up}}%</p>
                 <p>Total confirmed cases</p>
               </div>
@@ -704,7 +704,7 @@ provinces_confirmed = {{latest_provinces_confirmed}}></script>
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{latest_summary.Recovered}}</h3>
+                <h3>{{latest_data.recovered}}</h3>
                 <p> +{{recovered_up}}%</p>
                 <p>Total Recovered</p>
               </div>
@@ -719,7 +719,7 @@ provinces_confirmed = {{latest_provinces_confirmed}}></script>
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{latest_summary.Active}}</h3>
+                <h3>{{latest_data.active}}</h3>
                 <p> {{sign}} {{active_change}}%</p>
                 <p>Active Cases</p>
               </div>
@@ -733,7 +733,7 @@ provinces_confirmed = {{latest_provinces_confirmed}}></script>
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>{{latest_summary.Deaths}}</h3>
+                <h3>{{latest_data.deaths}}</h3>
                 <p> +{{deaths_up}}%</p>
                 <p>Total Deaths</p>
               </div>

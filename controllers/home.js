@@ -7,7 +7,8 @@ module.exports = {
 
   getHome: async (req, res) => {
     try {
-      const API_URL = 'https://api.covid19api.com/dayone/country/south-africa';
+      const API_URL_FALLBACK = 'https://api.covid19api.com/dayone/country/south-africa';
+      const API_URL = 'https://corona.lmao.ninja/v2/countries/South%20Africa?yesterday'
       const TIME_API_URL = 'https://worldtimeapi.org/api/timezone/Africa/Johannesburg';
 
 
@@ -55,16 +56,61 @@ module.exports = {
         console.log(error.response.body);
         //=> 'Internal server error ...'
     }
+
+    let csv_lockdown;
+         try {
+        const response = await got('https://raw.githubusercontent.com/dsfsi/covid19za/master/data/lockdown/covid19za_provincial_cumulative_timeline_lockdown.csv');
+        //console.log(response.body);
+        csv_lockdown = response.body;
+        //=> '<!doctype html> ...'
+    } catch (error) {
+        console.log(error.response.body);
+        //=> 'Internal server error ...'
+    }
   
   let latest_provinces_confirmed = await csv.parse(csv_content);
-
+  let lockdown = await csv.parse(csv_lockdown)
  latest_provinces_confirmed = latest_provinces_confirmed
 [latest_provinces_confirmed.length-1];
 
 
-     
+ lockdown = lockdown[lockdown.length-1][2];
+ lockdown = parseInt(lockdown)
+ let lockdown_colour;
 
-      let summary = await getSummary(API_URL);
+ console.log(typeof lockdown);
+ 
+
+switch (lockdown) {
+  case 1:
+    lockdown_colour ="succsess";
+    break;
+
+     case 2:
+    lockdown_colour ="info";
+    break;
+
+     case 3:
+    lockdown_colour ="primary";
+    break;
+
+     case 4:
+    lockdown_colour ="warning";
+    break;
+     case 5:
+    lockdown_colour ="danger";
+    break;
+
+  default:
+  lockdown_colour ="light";
+    break;
+}
+
+
+
+     let latest_data = await getSummary(API_URL);
+
+      let summary = await getSummary(API_URL_FALLBACK);
       let time_response = await getSummary(TIME_API_URL);
       let current_time = time_response.datetime;
 
@@ -118,7 +164,7 @@ module.exports = {
       res.render('index', 
        {
         indexCSS: true,
-        latest_summary,
+        latest_data,
         closed_cases,
         time,
         confirmed_up,
@@ -128,6 +174,8 @@ module.exports = {
         sign,
         year,
         latest_provinces_confirmed,
+        lockdown,
+        lockdown_colour,
         title
     
     

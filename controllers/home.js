@@ -73,7 +73,6 @@ module.exports = {
  latest_provinces_confirmed = latest_provinces_confirmed
 [latest_provinces_confirmed.length-1];
 
-
  lockdown = lockdown[lockdown.length-1][2];
  lockdown = parseInt(lockdown)
  let lockdown_colour;

@@ -78,7 +78,6 @@ module.exports = {
  lockdown = parseInt(lockdown)
  let lockdown_colour;
 
- console.log(typeof lockdown);
  
 
 switch (lockdown) {

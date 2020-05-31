@@ -24,9 +24,10 @@ app.set('view engine', 'handlebars');
 
 // Include routers
 const homeRoutes = require('./routes/home');
+const provinceRoutes = require('./routes/provinces')
 
 // Set up server related variable
-// TODO Change to port 80
+
 const port = 3000;
 
 // add middle-parser middleware
@@ -54,6 +55,8 @@ app.use(express.static('public'));
 
 // home route
 app.use('/', homeRoutes);
+
+app.use('/provinces', provinceRoutes);
 
 app.use(errorController.getError);
 

@@ -40,7 +40,6 @@ module.exports = {
 
  
   (async() => {
-    
 
     let csv_lockdown;
          try {
@@ -53,10 +52,9 @@ module.exports = {
         //=> 'Internal server error ...'
     }
   
-  //let latest_provinces_confirmed = await csv.parse(csv_content);
+
   let lockdown = await csv.parse(csv_lockdown)
-//  latest_provinces_confirmed = latest_provinces_confirmed
-// [latest_provinces_confirmed.length-1];
+
 
  lockdown = lockdown[lockdown.length-1][2];
  lockdown = parseInt(lockdown)
@@ -66,7 +64,8 @@ module.exports = {
 
 switch (lockdown) {
   case 1:
-    lockdown_colour ="succsess";
+    lockdown_colour ="success";
+  
     break;
 
      case 2:

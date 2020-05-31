@@ -15,7 +15,7 @@ source_deaths_cases = 'covid_stats/sa_covid_stats.6.csv'
 cleaned_deaths_cases = 'covid_stats/cleaned_up_stats/sa_provinces_deaths.csv'
 destination_deaths_cases = 'covid_stats/json_stats/sa_provinces_deaths.json'
 
-day_offset = 80
+day_offset = 79
 day_of_year = datetime.now().timetuple().tm_yday
 
 update_number = day_of_year - day_offset

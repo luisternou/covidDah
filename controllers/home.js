@@ -36,27 +36,11 @@ module.exports = {
         });
 
 
-      }
-
-
-     
-
-
-//let parsedObject = await csv.parse(request.get("https://raw.githubusercontent.com/dsfsi/covid19za/master/data/covid19za_provincial_cumulative_timeline_confirmed.csv"));
-      
+      }      
 
  
   (async() => {
-    // let csv_content;
-    //      try {
-    //     const response = await got('https://raw.githubusercontent.com/dsfsi/covid19za/master/data/covid19za_provincial_cumulative_timeline_confirmed.csv');
-    //     //console.log(response.body);
-    //     csv_content = response.body;
-        
-    // } catch (error) {
-    //     console.log(error.response.body);
-    //     //=> 'Internal server error ...'
-    // }
+    
 
     let csv_lockdown;
          try {

@@ -2,6 +2,7 @@ const https = require('https');
 const request = require('request');
 const got = require('got');
 const csv = require("async-csv")
+const fs = require('fs')
 module.exports = {
  
 
@@ -46,16 +47,16 @@ module.exports = {
 
  
   (async() => {
-    let csv_content;
-         try {
-        const response = await got('https://raw.githubusercontent.com/dsfsi/covid19za/master/data/covid19za_provincial_cumulative_timeline_confirmed.csv');
-        //console.log(response.body);
-        csv_content = response.body;
-        //=> '<!doctype html> ...'
-    } catch (error) {
-        console.log(error.response.body);
-        //=> 'Internal server error ...'
-    }
+    // let csv_content;
+    //      try {
+    //     const response = await got('https://raw.githubusercontent.com/dsfsi/covid19za/master/data/covid19za_provincial_cumulative_timeline_confirmed.csv');
+    //     //console.log(response.body);
+    //     csv_content = response.body;
+        
+    // } catch (error) {
+    //     console.log(error.response.body);
+    //     //=> 'Internal server error ...'
+    // }
 
     let csv_lockdown;
          try {
@@ -68,10 +69,10 @@ module.exports = {
         //=> 'Internal server error ...'
     }
   
-  let latest_provinces_confirmed = await csv.parse(csv_content);
+  //let latest_provinces_confirmed = await csv.parse(csv_content);
   let lockdown = await csv.parse(csv_lockdown)
- latest_provinces_confirmed = latest_provinces_confirmed
-[latest_provinces_confirmed.length-1];
+//  latest_provinces_confirmed = latest_provinces_confirmed
+// [latest_provinces_confirmed.length-1];
 
  lockdown = lockdown[lockdown.length-1][2];
  lockdown = parseInt(lockdown)
@@ -103,6 +104,25 @@ switch (lockdown) {
   lockdown_colour ="light";
     break;
 }
+
+
+
+let confirmed_cases_string = fs.readFileSync(process.cwd() +'/covid_stats/json_stats/sa_provinces_confirmed.json').toString();
+
+
+
+let confirmed_cases_json = JSON.parse(confirmed_cases_string);
+
+confirmed_cases_json = confirmed_cases_json['total_cases'];
+confirmed_cases_json = JSON.stringify(confirmed_cases_json)
+
+
+
+
+
+
+
+
 
 
 
@@ -171,7 +191,8 @@ switch (lockdown) {
         deaths_up,
         sign,
         year,
-        latest_provinces_confirmed,
+        //latest_provinces_confirmed,
+        confirmed_cases_json,
         lockdown,
         lockdown_colour,
         title

@@ -7,19 +7,11 @@
   let deaths = document.currentScript.getAttribute('deaths');
   let recoveries = document.currentScript.getAttribute('recoveries');
   let latest_provinces_confirmed = document.currentScript.getAttribute('provinces_confirmed');
+ 
 
 
 
-var provinces_confirmed_updated = latest_provinces_confirmed.split(','); 
-provinces_confirmed_updated.shift();
-provinces_confirmed_updated.shift();
-provinces_confirmed_updated.pop();
-provinces_confirmed_updated.pop();
-provinces_confirmed_updated.pop();
 
-var provinces_confirmed_updated = provinces_confirmed_updated.map(function (x) { 
-  return parseInt(x, 10); 
-});
 
 
 
@@ -69,17 +61,18 @@ $(function () {
 
   
   // World map by jvectormap
+latest_provinces_confirmed = JSON.parse(latest_provinces_confirmed)
 
   var provData = {
-  "ZA-WC": provinces_confirmed_updated[8],
-  "ZA-FS": provinces_confirmed_updated[1],
-  "ZA-EC": provinces_confirmed_updated[0],
-  "ZA-NC": provinces_confirmed_updated[6],
-  "ZA-LP": provinces_confirmed_updated[4],
-  "ZA-MP": provinces_confirmed_updated[5],
-  "ZA-NL": provinces_confirmed_updated[3],
-  "ZA-NW": provinces_confirmed_updated[7],
-  "ZA-GT": provinces_confirmed_updated[2],
+  "ZA-WC": latest_provinces_confirmed['8'],
+  "ZA-FS": latest_provinces_confirmed['1'],
+  "ZA-EC": latest_provinces_confirmed['0'],
+  "ZA-NC": latest_provinces_confirmed['7'],
+  "ZA-LP": latest_provinces_confirmed['4'],
+  "ZA-MP": latest_provinces_confirmed['5'],
+  "ZA-NL": latest_provinces_confirmed['3'],
+  "ZA-NW": latest_provinces_confirmed['6'],
+  "ZA-GT": latest_provinces_confirmed['2'],
 };
   $('#map').vectorMap({
     map              : 'za_mill',

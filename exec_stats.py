@@ -13,7 +13,7 @@ destination_closed_cases = 'covid_stats/json_stats/sa_provinces_closed.json'
 
 source_deaths_cases = 'covid_stats/sa_covid_stats.6.csv'
 cleaned_deaths_cases = 'covid_stats/cleaned_up_stats/sa_provinces_deaths.csv'
-destination_closed_cases = 'covid_stats/json_stats/sa_provinces_deaths.json'
+destination_deaths_cases = 'covid_stats/json_stats/sa_provinces_deaths.json'
 
 day_offset = 80
 day_of_year = datetime.now().timetuple().tm_yday
@@ -48,4 +48,4 @@ else:
   csv_content = pd.read_csv(source_deaths_cases)
   csv_content.columns = ['age','deaths','percentage']
   csv_content.to_csv(cleaned_deaths_cases)
-  pd.read_csv(cleaned_deaths_cases).to_json(destination_closed_cases)
+  pd.read_csv(cleaned_deaths_cases).to_json(destination_deaths_cases)

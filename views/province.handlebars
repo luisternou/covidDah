@@ -270,8 +270,8 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{latest_data.cases}}</h3>
-                <p> +{{confirmed_up}}%</p>
+                <h3>{{total_cases}}</h3>
+                {{!-- <p> +{{confirmed_up}}%</p> --}}
                 <p>Total confirmed cases</p>
               </div>
               <div class="icon">
@@ -284,8 +284,8 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{latest_data.recovered}}</h3>
-                <p> +{{recovered_up}}%</p>
+                <h3>{{recoveries}}</h3>
+                {{!-- <p> +{{recovered_up}}%</p> --}}
                 <p>Total Recovered</p>
               </div>
               <div class="icon">
@@ -299,8 +299,8 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{latest_data.active}}</h3>
-                <p> {{sign}} {{active_change}}%</p>
+                <h3>{{active}}</h3>
+                {{!-- <p> {{sign}} {{active_change}}%</p> --}}
                 <p>Active Cases</p>
               </div>
               <div class="icon">
@@ -313,8 +313,8 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>{{latest_data.deaths}}</h3>
-                <p> +{{deaths_up}}%</p>
+                <h3>{{deaths}}</h3>
+                {{!-- <p> +{{deaths_up}}%</p> --}}
                 <p>Total Deaths</p>
               </div>
               <div class="icon">
@@ -337,31 +337,21 @@
                   <thead>
                   <tr>
                     <th>District</th>
-                    <th>Total</th>
-                    <th>Recoveries</th>
-                    <th>Active Cases</th>
-                    <th>Deaths</th>
+                    <th>Confirmed Cases</th>
                   </tr>
                   </thead>
                   <tbody>
+                    {{#each district_data_object}}
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.value}}</td>
                   </tr>
-                  
+                  {{/each}}
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>District</th>
+                    <th>Confirmed Cases</th>
                   </tr>
                   </tfoot>
                 </table>

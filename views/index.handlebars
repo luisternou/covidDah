@@ -578,7 +578,10 @@ provinces_confirmed = {{confirmed_cases_json}}></script>
               </div>
               <div class="card-body">
                 <h3>We are currently at Lockdown Level</h3><center><h1><b>{{lockdown}}<b></h1></center>
+                <br>
+                <center><a href="#" class="btn bg-{{lockdown_colour}}" data-toggle="modal" data-target="#lockdown_info">More Info</a></center>
               </div>
+            
               <!-- /.card-body -->
               
             </div>
@@ -703,7 +706,7 @@ provinces_confirmed = {{confirmed_cases_json}}></script>
         <a href="mailto:andreas@krueger.nom.za?subject=%5BCovidDash%5D%20Tell%20me%20more!&amp;body=Howzit%0A%0AI%20really%20like%20your%20stuff!%20Tell%20me%20more%20about%20you!%0A%0ARegards%2C%0A-Name">drop me a Line.</a>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Got it</button>
         {{!-- <button type="button" class="btn btn-primary">Save changes</button> --}}
       </div>
     </div>
@@ -718,6 +721,7 @@ provinces_confirmed = {{confirmed_cases_json}}></script>
       }
     });
 </script>
+
 
 
 <!-- Modal -->
@@ -742,6 +746,29 @@ Some features work already like the summary at the top and the map but some are 
       </div>
     </div>
   </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="lockdown_info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">The confusing mess that is <code>Lockdown</code></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <embed src="https://www.lockdownbozza.co.za/home?embedded=true" height="365px" width="100%">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Still confused, but ok</button>
+        {{!-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 </body>

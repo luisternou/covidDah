@@ -106,3 +106,17 @@ dist
 covid_stats/*.csv
 covid_stats/cleaned_up_stats/*.csv
 covid_stats/json_stats/*.json
+covid_stats/districts/gp/*.csv
+covid_stats/districts/gp/*.json
+covid_stats/districts/ec/*.csv
+covid_stats/districts/ec/*.json
+covid_stats/districts/lp/*.csv
+covid_stats/districts/lp/*.json
+covid_stats/districts/mp/*.csv
+covid_stats/districts/mp/*.json
+covid_stats/districts/nc/*.csv
+covid_stats/districts/nc/*.json
+covid_stats/districts/nw/*.csv
+covid_stats/districts/nw/*.json
+covid_stats/districts/wc/*.csv
+covid_stats/districts/wc/*.json

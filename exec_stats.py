@@ -22,6 +22,7 @@ update_number = day_of_year - day_offset
 update_number = str(update_number)
 
 url = 'https://www.nicd.ac.za/covid-19-update-' +update_number
+print(url)
 try:
     conn = urllib.request.urlopen(url)
 except urllib.error.HTTPError as e:

@@ -9,11 +9,11 @@ source_total_cases = 'covid_stats/sa_covid_stats.0.csv'
 cleaned_total_cases = 'covid_stats/cleaned_up_stats/sa_provinces_confirmed.csv'
 destination_total_cases = 'covid_stats/json_stats/sa_provinces_confirmed.json'
 
-source_closed_cases = 'covid_stats/sa_covid_stats.4.csv'
+source_closed_cases = 'covid_stats/sa_covid_stats.1.csv'
 cleaned_closed_cases = 'covid_stats/cleaned_up_stats/sa_provinces_closed.csv'
 destination_closed_cases = 'covid_stats/json_stats/sa_provinces_closed.json'
 
-source_deaths_cases = 'covid_stats/sa_covid_stats.6.csv'
+source_deaths_cases = 'covid_stats/sa_covid_stats.2.csv'
 cleaned_deaths_cases = 'covid_stats/cleaned_up_stats/sa_provinces_deaths.csv'
 destination_deaths_cases = 'covid_stats/json_stats/sa_provinces_deaths.json'
 

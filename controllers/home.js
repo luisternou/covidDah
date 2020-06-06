@@ -107,8 +107,6 @@ confirmed_cases_json = JSON.stringify(confirmed_cases_json)
 
 
 
-
-
      let latest_data = await getSummary(API_URL);
 
       let summary = await getSummary(API_URL_FALLBACK);

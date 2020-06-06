@@ -59,7 +59,7 @@ function getDistrictLatest(district, province_cases)
 let gauteng_district_cases_string = fs.readFileSync(process.cwd() +'/covid_stats/districts/gp/gp.json').toString();
 gauteng_district_cases = JSON.parse(gauteng_district_cases_string)
 
-
+let latest_date = getDistrictLatest('date', gauteng_district_cases);
 
 let johannesburg_cases = getDistrictLatest('johannesburg', gauteng_district_cases);
 
@@ -125,6 +125,7 @@ let active = total_cases - recoveries - deaths
         deaths,
         active,
         short_province,
+        latest_date,
         title
     
     
@@ -190,7 +191,7 @@ function getDistrictLatest(district, province_cases)
 let gauteng_district_cases_string = fs.readFileSync(process.cwd() +'/covid_stats/districts/gp/gp.json').toString();
 gauteng_district_cases = JSON.parse(gauteng_district_cases_string)
 
-
+let latest_date = getDistrictLatest('date', gauteng_district_cases);
 
 let johannesburg_cases = getDistrictLatest('johannesburg', gauteng_district_cases);
 
@@ -256,6 +257,7 @@ let active = total_cases - recoveries - deaths
         deaths,
         active,
         short_province,
+        latest_date,
         title
     
     
@@ -322,6 +324,7 @@ let gauteng_district_cases_string = fs.readFileSync(process.cwd() +'/covid_stats
 gauteng_district_cases = JSON.parse(gauteng_district_cases_string)
 
 
+let latest_date = getDistrictLatest('date', gauteng_district_cases);
 
 let johannesburg_cases = getDistrictLatest('johannesburg', gauteng_district_cases);
 
@@ -387,6 +390,7 @@ let active = total_cases - recoveries - deaths
         deaths,
         active,
         short_province,
+        latest_date,
         title
     
     
@@ -452,7 +456,7 @@ function getDistrictLatest(district, province_cases)
 let gauteng_district_cases_string = fs.readFileSync(process.cwd() +'/covid_stats/districts/gp/gp.json').toString();
 gauteng_district_cases = JSON.parse(gauteng_district_cases_string)
 
-
+let latest_date = getDistrictLatest('date', gauteng_district_cases);
 
 let johannesburg_cases = getDistrictLatest('johannesburg', gauteng_district_cases);
 
@@ -518,6 +522,7 @@ let active = total_cases - recoveries - deaths
         deaths,
         active,
         short_province,
+        latest_date,
         title
     
     
@@ -583,7 +588,7 @@ function getDistrictLatest(district, province_cases)
 let gauteng_district_cases_string = fs.readFileSync(process.cwd() +'/covid_stats/districts/gp/gp.json').toString();
 gauteng_district_cases = JSON.parse(gauteng_district_cases_string)
 
-
+let latest_date = getDistrictLatest('date', gauteng_district_cases);
 
 let johannesburg_cases = getDistrictLatest('johannesburg', gauteng_district_cases);
 
@@ -649,6 +654,7 @@ let active = total_cases - recoveries - deaths
         deaths,
         active,
         short_province,
+        latest_date,
         title
     
     
@@ -714,7 +720,7 @@ function getDistrictLatest(district, province_cases)
 let gauteng_district_cases_string = fs.readFileSync(process.cwd() +'/covid_stats/districts/gp/gp.json').toString();
 gauteng_district_cases = JSON.parse(gauteng_district_cases_string)
 
-
+let latest_date = getDistrictLatest('date', gauteng_district_cases);
 
 let johannesburg_cases = getDistrictLatest('johannesburg', gauteng_district_cases);
 
@@ -780,6 +786,7 @@ let active = total_cases - recoveries - deaths
         deaths,
         active,
         short_province,
+        latest_date,
         title
     
     
@@ -845,7 +852,7 @@ function getDistrictLatest(district, province_cases)
 let gauteng_district_cases_string = fs.readFileSync(process.cwd() +'/covid_stats/districts/gp/gp.json').toString();
 gauteng_district_cases = JSON.parse(gauteng_district_cases_string)
 
-
+let latest_date = getDistrictLatest('date', gauteng_district_cases);
 
 let johannesburg_cases = getDistrictLatest('johannesburg', gauteng_district_cases);
 
@@ -911,6 +918,7 @@ let active = total_cases - recoveries - deaths
         deaths,
         active,
         short_province,
+        latest_date,
         title
     
     
@@ -976,7 +984,7 @@ function getDistrictLatest(district, province_cases)
 let gauteng_district_cases_string = fs.readFileSync(process.cwd() +'/covid_stats/districts/gp/gp.json').toString();
 gauteng_district_cases = JSON.parse(gauteng_district_cases_string)
 
-
+let latest_date = getDistrictLatest('date', gauteng_district_cases);
 
 let johannesburg_cases = getDistrictLatest('johannesburg', gauteng_district_cases);
 
@@ -1042,6 +1050,7 @@ let active = total_cases - recoveries - deaths
         deaths,
         active,
         short_province,
+        latest_date,
         title
     
     
@@ -1107,7 +1116,7 @@ function getDistrictLatest(district, province_cases)
 let gauteng_district_cases_string = fs.readFileSync(process.cwd() +'/covid_stats/districts/gp/gp.json').toString();
 gauteng_district_cases = JSON.parse(gauteng_district_cases_string)
 
-
+let latest_date = getDistrictLatest('date', gauteng_district_cases);
 
 let johannesburg_cases = getDistrictLatest('johannesburg', gauteng_district_cases);
 
@@ -1173,6 +1182,7 @@ let active = total_cases - recoveries - deaths
         deaths,
         active,
         short_province,
+        latest_date,
         title
     
     

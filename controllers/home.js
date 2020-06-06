@@ -100,7 +100,7 @@ confirmed_cases_json = confirmed_cases_json['total_cases'];
 confirmed_cases_json = JSON.stringify(confirmed_cases_json)
 
 
-
+console.log(confirmed_cases_json)
 
 
 

@@ -19,7 +19,7 @@ module.exports = {
 
 
 
-        let title = "SA Covid-19 | Gauteng";
+       
     
     function getSummary(url)
       {
@@ -65,6 +65,7 @@ function getDistrictLatest(district, province_cases)
 let gauteng_district_cases_string = fs.readFileSync(process.cwd() +'/covid_stats/districts/gp/gp.json').toString();
 gauteng_district_cases = JSON.parse(gauteng_district_cases_string)
 
+
 let johannesburg_cases = getDistrictLatest('johannesburg', gauteng_district_cases);
 
 let ekrhuleni_cases = getDistrictLatest('ekrhuleni', gauteng_district_cases);
@@ -95,6 +96,7 @@ total_cases = total_cases[2]
 
 
 let recoveries = closed_cases_json['recoveries'];
+console.log(recoveries);
 recoveries = recoveries[2]
 
 let deaths = closed_cases_json['deaths'];
@@ -110,7 +112,7 @@ let active = total_cases - recoveries - deaths
 
       let year = new Date().getFullYear()
       let province_name = 'Gauteng'
-
+       let title = "SA Covid-19 | " + province_name;
       res.render('province', 
        {
         indexCSS: true,

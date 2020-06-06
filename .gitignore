@@ -120,3 +120,4 @@ covid_stats/districts/nw/*.csv
 covid_stats/districts/nw/*.json
 covid_stats/districts/wc/*.csv
 covid_stats/districts/wc/*.json
+covid_stats/latest_stats.html

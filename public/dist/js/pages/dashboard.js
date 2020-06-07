@@ -8,12 +8,59 @@
   let recoveries = document.currentScript.getAttribute('recoveries');
   let latest_provinces_confirmed = document.currentScript.getAttribute('provinces_confirmed');
  
+let total_confirmed = document.currentScript.getAttribute('total_confirmed');
+
+let total_recovered = document.currentScript.getAttribute('total_recovered');
+
+let total_death = document.currentScript.getAttribute('total_death');
 
 
 
+var getDates = function(startDate, endDate) {
+  var dates = [],
+      currentDate = startDate,
+      addDays = function(days) {
+        var date = new Date(this.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
+      };
+  while (currentDate <= endDate) {
+    dates.push(currentDate);
+    currentDate = addDays.call(currentDate, 1);
+  }
+  return dates;
+};
+
+// Usage
+var dates = getDates(new Date(2020,2,5), new Date(2020,5,5));                                                                                                           
+
+let dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' }) 
+
+let clean_dates = [];
 
 
+for (let index = 0; index < dates.length; index++) {
+  let [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(dates[index] ) 
 
+clean_dates.push(`${day}-${month}-${year }`)
+ 
+}
+
+let total_recovered_array = total_recovered.split(',');
+
+
+for (let index = 0; index < total_recovered_array.length; index++) {
+  total_recovered_array[index] = parseInt(total_recovered_array[index]);
+  
+}
+
+let total_death_array = total_death.split(',');
+
+
+for (let index = 0; index < total_death_array.length; index++) {
+  total_death_array[index] = parseInt(total_death_array[index]);
+  
+}
 
 
 $(function () {
@@ -121,35 +168,40 @@ latest_provinces_confirmed = JSON.parse(latest_provinces_confirmed)
   var salesChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d');
   //$('#revenue-chart').get(0).getContext('2d');
 
-  var salesChartData = {
-    labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+  var closed_cases_chart_data = {
+    labels  : clean_dates,
     datasets: [
       {
-        label               : 'Digital Goods',
-        backgroundColor     : 'rgba(60,141,188,0.9)',
-        borderColor         : 'rgba(60,141,188,0.8)',
-        pointRadius          : false,
-        pointColor          : '#3b8bba',
-        pointStrokeColor    : 'rgba(60,141,188,1)',
-        pointHighlightFill  : '#fff',
-        pointHighlightStroke: 'rgba(60,141,188,1)',
-        data                : [28, 48, 40, 19, 86, 27, 90, 20]
+        label               : 'Recoveries',
+        fill                : false,
+        borderWidth         : 2,
+        lineTension         : 0,
+         spanGaps : true,
+        borderColor         : '#5cb85c',
+         pointRadius         : 3,
+        pointHoverRadius    : 7,
+        pointColor          : '#5cb85c',
+        pointBackgroundColor: '#5cb85c',
+
+        data                : total_recovered_array
       },
       {
-        label               : 'Electronics',
-        backgroundColor     : 'rgba(210, 214, 222, 1)',
-        borderColor         : 'rgba(210, 214, 222, 1)',
-        pointRadius         : false,
-        pointColor          : 'rgba(210, 214, 222, 1)',
-        pointStrokeColor    : '#c1c7d1',
-        pointHighlightFill  : '#fff',
-        pointHighlightStroke: 'rgba(220,220,220,1)',
-        data                : [65, 59, 80, 81, 56, 55, 40, 100]
+        label               : 'Deaths',
+        fill                : false,
+        borderWidth         : 2,
+        lineTension         : 0,
+         spanGaps : true,
+        borderColor         : '#d9534f',
+         pointRadius         : 3,
+        pointHoverRadius    : 7,
+        pointColor          : '#d9534f',
+        pointBackgroundColor: '#d9534f',
+        data                : total_death_array
       },
     ]
   }
 
-  var salesChartOptions = {
+  var closed_cases_chart_options = {
     maintainAspectRatio : false,
     responsive : true,
     legend: {
@@ -172,8 +224,8 @@ latest_provinces_confirmed = JSON.parse(latest_provinces_confirmed)
   // This will get the first returned node in the jQuery collection.
   var salesChart = new Chart(salesChartCanvas, { 
       type: 'line', 
-      data: salesChartData, 
-      options: salesChartOptions
+      data: closed_cases_chart_data, 
+      options: closed_cases_chart_options
     }
   )
 
@@ -221,11 +273,28 @@ latest_provinces_confirmed = JSON.parse(latest_provinces_confirmed)
   var salesGraphChartCanvas = $('#line-chart').get(0).getContext('2d');
   //$('#revenue-chart').get(0).getContext('2d');
 
+let total_confirmed_array = total_confirmed.split(',');
+
+
+
+
+
+for (let index = 0; index < total_confirmed_array.length; index++) {
+  total_confirmed_array[index] = parseInt(total_confirmed_array[index]);
+  
+}
+
+
+
+
+
+
+
   var salesGraphChartData = {
-    labels  : ['2011 Q1', '2011 Q2', '2011 Q3', '2011 Q4', '2012 Q1', '2012 Q2', '2012 Q3', '2012 Q4', '2013 Q1', '2013 Q2'],
+    labels  : clean_dates,
     datasets: [
       {
-        label               : 'Digital Goods',
+        label               : 'Cases',
         fill                : false,
         borderWidth         : 2,
         lineTension         : 0,
@@ -235,7 +304,7 @@ latest_provinces_confirmed = JSON.parse(latest_provinces_confirmed)
         pointHoverRadius    : 7,
         pointColor          : '#efefef',
         pointBackgroundColor: '#efefef',
-        data                : [2666, 2778, 4912, 3767, 6810, 5670, 4820, 15073, 10687, 8432]
+        data                : total_confirmed_array
       }
     ]
   }

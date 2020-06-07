@@ -62,7 +62,8 @@
 <script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js" deaths = "{{latest_data.deaths}}" recoveries = "{{latest_data.recovered}}"
-provinces_confirmed = {{confirmed_cases_json}}></script>
+provinces_confirmed = {{confirmed_cases_json}} total_confirmed = {{all_confirmed_cases}}
+total_recovered = {{all_recovered_cases}} total_death = {{all_death_cases}}></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 
@@ -403,7 +404,7 @@ provinces_confirmed = {{confirmed_cases_json}}></script>
             <div class="card bg-gradient-info">
               <div class="card-header">
                <h3 class="card-title">
-                  <i class="fas fa-lock"></i>
+                  <i class="far fa-clipboard"></i>
                   Cases
                 </h3>
 
@@ -676,7 +677,7 @@ provinces_confirmed = {{confirmed_cases_json}}></script>
     <strong>Copyright &copy; {{year}} <a href="vitomilix-webdesign.com">Vitomilix</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.5
+      <b>Version</b> 1.0.69
     </div>
   </footer>
 

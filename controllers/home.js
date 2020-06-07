@@ -36,7 +36,43 @@ module.exports = {
         });
 
 
-      }      
+      }   
+
+      function getAllConfirmedCases(object)
+      {
+        
+        let allConfirmedCasses = [];
+       for (let index = 0; index < object.length; index++) {
+         allConfirmedCasses.push(object[index]['Confirmed']);
+ 
+       }
+
+        return allConfirmedCasses;
+      } 
+
+         function getAllRecovered(object)
+      {
+        
+        let allRecoveries = [];
+       for (let index = 0; index < object.length; index++) {
+         allRecoveries.push(object[index]['Recovered']);
+ 
+       }
+
+        return allRecoveries;
+      } 
+
+            function getAllDeaths(object)
+      {
+        
+        let allDeaths = [];
+       for (let index = 0; index < object.length; index++) {
+         allDeaths.push(object[index]['Deaths']);
+ 
+       }
+
+        return allDeaths;
+      } 
 
  
   (async() => {
@@ -102,14 +138,17 @@ confirmed_cases_json = JSON.stringify(confirmed_cases_json)
 
 
 
-
-
-
-
-
      let latest_data = await getSummary(API_URL);
 
       let summary = await getSummary(API_URL_FALLBACK);
+      
+    let all_confirmed_cases = await getAllConfirmedCases(summary);
+
+    let all_recovered_cases = await getAllRecovered(summary);
+
+    let all_death_cases = await getAllDeaths(summary);
+    
+    
       let time_response = await getSummary(TIME_API_URL);
       let current_time = time_response.datetime;
 
@@ -172,10 +211,12 @@ confirmed_cases_json = JSON.stringify(confirmed_cases_json)
         deaths_up,
         sign,
         year,
-        //latest_provinces_confirmed,
         confirmed_cases_json,
         lockdown,
         lockdown_colour,
+        all_confirmed_cases,
+        all_recovered_cases,
+        all_death_cases,
         title
     
     

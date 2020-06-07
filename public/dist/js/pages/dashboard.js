@@ -14,27 +14,6 @@ let total_recovered = document.currentScript.getAttribute('total_recovered');
 
 let total_death = document.currentScript.getAttribute('total_death');
 
-let yesterday_date = new Date();
-yesterday_date.setDate(yesterday_date.getDate() - 1);
-
-let dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' }) 
-
-let [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(yesterday_date) 
-
-yesterday_day = `${day}`;
-
-yesterday_day = parseInt(yesterday_day);
-
-yesterday_month = `${month}`;
-
-yesterday_month = parseInt(yesterday_month);
-
-yesterday_month = yesterday_month - 1;
-
-
-yesterday_year = `${year}`;
-
-yesterday_year = parseInt(yesterday_year);
 
 
 var getDates = function(startDate, endDate) {
@@ -53,9 +32,9 @@ var getDates = function(startDate, endDate) {
 };
 
 // Usage
-var dates = getDates(new Date(2020,2,5), new Date(yesterday_year,yesterday_month,yesterday_day));                                                                                                           
+var dates = getDates(new Date(2020,2,5), new Date(2020,5,5));                                                                                                           
 
-
+let dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' }) 
 
 let clean_dates = [];
 
@@ -239,9 +218,6 @@ latest_provinces_confirmed = JSON.parse(latest_provinces_confirmed)
           display : false,
         }
       }]
-    },
-    legend: {
-      display: true
     }
   }
 
@@ -361,9 +337,6 @@ for (let index = 0; index < total_confirmed_array.length; index++) {
           drawBorder: false,
         }
       }]
-    },
-        legend: {
-      display: true
     }
   }
 

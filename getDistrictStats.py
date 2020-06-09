@@ -57,9 +57,9 @@ elif province == 'mp':
 elif province == 'nc':
     os.system('curl https://raw.githubusercontent.com/dsfsi/covid19za/master/data/district_data/Provincial_NC_cumulative > ' + source_total_cases)
     csv_content = pd.read_csv(source_total_cases)
-    csv_content.columns = ['date','francis_baard', 'namakwa', 'pixley_ka_seme', 
-    'john_taolo_gaetswe', 'francis_baard_deaths', 'namakwa_deaths', 'pixley_ka_seme_deaths', 
-    'john_taolo_gaetswe_deaths', 'francis_baard_recoveries', 'namakwa_recoveries', 'pixley_ka_seme_recoveries', 
+    csv_content.columns = ['date','francis_baard', 'namakwa', 'pixley_ka_seme', 'zf_mgcawu',
+    'john_taolo_gaetswe', 'francis_baard_deaths', 'namakwa_deaths', 'pixley_ka_seme_deaths', 'zf_mgcawu_deaths',
+    'john_taolo_gaetswe_deaths', 'francis_baard_recoveries', 'namakwa_recoveries', 'pixley_ka_seme_recoveries', 'zf_mgcawu_recoveries',
     'john_taolo_gaetswe_recoveries',
     'source']
     

@@ -45,7 +45,11 @@ function amountOfKeys(obj)
 
 function getDistrictLatest(district, province_cases)
 {
+    
   let all_values = province_cases[district];
+console.log(district);
+
+    console.log(all_values);
   let latest_value = all_values[amountOfKeys(all_values)-1]
 
   return latest_value;
@@ -56,26 +60,32 @@ function getDistrictLatest(district, province_cases)
   (async() => {
 
 
-let gauteng_district_cases_string = fs.readFileSync(process.cwd() +'/covid_stats/districts/gp/gp.json').toString();
-gauteng_district_cases = JSON.parse(gauteng_district_cases_string)
+let eastern_cape_district_cases_string = fs.readFileSync(process.cwd() +'/covid_stats/districts/ec/ec.json').toString();
+eastern_cape_district_cases = JSON.parse(eastern_cape_district_cases_string)
 
-let latest_date = getDistrictLatest('date', gauteng_district_cases);
+let latest_date = getDistrictLatest('date', eastern_cape_district_cases);
 
-let johannesburg_cases = getDistrictLatest('johannesburg', gauteng_district_cases);
+let alfred_nzo_cases = getDistrictLatest('alfred_nzo', eastern_cape_district_cases);
 
-let ekrhuleni_cases = getDistrictLatest('ekrhuleni', gauteng_district_cases);
+let amathole_cases = getDistrictLatest('amathole', eastern_cape_district_cases);
 
-let sedibeng_cases = getDistrictLatest('sedibeng', gauteng_district_cases);
+let buffalo_city_cases = getDistrictLatest('buffalo_city', eastern_cape_district_cases);
 
-let tshwane_cases = getDistrictLatest('tshwane', gauteng_district_cases);
+let chris_hani_cases = getDistrictLatest('chris_hani', eastern_cape_district_cases);
 
-let westrand_cases = getDistrictLatest('westrand', gauteng_district_cases);
+let joe_gqabi_cases = getDistrictLatest('joe_gqabi', eastern_cape_district_cases);
 
-let unallocated_cases = getDistrictLatest('unallocated', gauteng_district_cases);
+let nelson_mandela_cases = getDistrictLatest('nelson_mandela', eastern_cape_district_cases);
 
-let district_names = ['Johannesburg', 'Ekrhuleni', 'Sedibeng', 'Tshwane', 'Westrand', 'Unallocated']
-let district_cases = [johannesburg_cases, ekrhuleni_cases, sedibeng_cases, tshwane_cases, westrand_cases, unallocated_cases];
-let gauteng_district_amount = 6;
+let or_thambo_cases = getDistrictLatest('or_tambo', eastern_cape_district_cases);
+
+let sarah_baartman_cases = getDistrictLatest('sarah_baartman', eastern_cape_district_cases);
+
+let unallocated_cases = getDistrictLatest('unallocated', eastern_cape_district_cases);
+
+let district_names = ['Alfred Nzo', 'Amathole', 'Buffalo City', 'Chris Hani', 'Joe Gqabi', 'Nelson Mandela Bay', 'O R Thambo', 'Sarah Baartman', 'Unallocated']
+let district_cases = [alfred_nzo_cases, amathole_cases, buffalo_city_cases, chris_hani_cases, joe_gqabi_cases, nelson_mandela_cases, or_thambo_cases, sarah_baartman_cases,  unallocated_cases];
+let eastern_cape_district_amount = 9;
 
 const district_data_object = district_names.map((district_names, i) => ({ name: district_names, value: district_cases[i] }));
 

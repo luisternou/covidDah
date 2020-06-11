@@ -472,8 +472,7 @@ total_recovered = {{all_recovered_cases}} total_death = {{all_death_cases}}></sc
           <!-- /.Left col -->
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <section class="col-lg-5 connectedSortable">
-
-            <!-- Map card -->
+<!-- Map card -->
             <div class="card bg-gradient-secondary">
               <div class="card-header border-0">
                 <h3 class="card-title">
@@ -507,7 +506,7 @@ total_recovered = {{all_recovered_cases}} total_death = {{all_death_cases}}></sc
             <div class="card bg-gradient-{{lockdown_colour}}">
               <div class="card-header border-0">
                 <h3 class="card-title">
-                  <i class="fas fa-lock mr-1"></i>
+                  <i class="fas fa-lock"></i>
                   Lockdown Level
                 </h3>
 
@@ -521,13 +520,18 @@ total_recovered = {{all_recovered_cases}} total_death = {{all_death_cases}}></sc
                 </div>
               </div>
               <div class="card-body">
-                <h3>We are currently at Lockdown Level</h3><center><h1><b>{{lockdown}}<b></h1></center>
+                <h3>We are currently at Lockdown Level</h3>
+                <br>
+                <center><h1><b>{{lockdown}}</b></h1></center>
+
                 <br>
                 <center><a href="#" class="btn bg-{{lockdown_colour}}" data-toggle="modal" data-target="#lockdown_info">More Info</a></center>
               </div>
-            
               <!-- /.card-body -->
-              
+              <div class="card-footer bg-transparent">
+    
+              </div>
+              <!-- /.card-footer -->
             </div>
             <!-- /.card -->
 
@@ -568,8 +572,10 @@ total_recovered = {{all_recovered_cases}} total_death = {{all_death_cases}}></sc
               </div>
               <!-- /.card-body -->
             </div>
+            <!-- /.card -->
 
-                     <!-- Disclaimer -->
+
+               <!-- Disclaimer -->
             <div class="card bg-gradient-danger">
               <div class="card-header border-0">
                   

@@ -24,32 +24,28 @@ os.system(get_command)
 cwd = os.getcwd()
 
 with open(cwd + '/covid_stats/latest_stats.html') as f:
-    if '404' not in f.read():
-        local_url = 'file://' + cwd + '/covid_stats/latest_stats.html'
-        command = './html_table_converter -u ' + local_url + ' -o covid_stats/sa_covid_stats'
+    local_url = 'file://' + cwd + '/covid_stats/latest_stats.html'
+    command = './html_table_converter -u ' + local_url + ' -o covid_stats/sa_covid_stats'
 
-        os.system(command)
-        csv_content = pd.read_csv(source_total_cases)
-        csv_content.columns = ['province','total_cases','percentage']
-        csv_content.to_csv(cleaned_total_cases)
-        pd.read_csv(cleaned_total_cases).to_json(destination_total_cases)
+    os.system(command)
+    csv_content = pd.read_csv(source_total_cases)
+    csv_content.columns = ['province','total_cases','percentage']
+    csv_content.to_csv(cleaned_total_cases)
+    pd.read_csv(cleaned_total_cases).to_json(destination_total_cases)
   
-        csv_content = pd.read_csv(source_closed_cases)
-        csv_content.columns = ['province','deaths','recoveries']
-        csv_content.to_csv(cleaned_closed_cases)
-        pd.read_csv(cleaned_closed_cases).to_json(destination_closed_cases)
+    csv_content = pd.read_csv(source_closed_cases)
+    csv_content.columns = ['province','deaths','recoveries']
+    csv_content.to_csv(cleaned_closed_cases)
+    pd.read_csv(cleaned_closed_cases).to_json(destination_closed_cases)
 
-        csv_content = pd.read_csv(source_deaths_cases)
-        csv_content.columns = ['age','deaths','percentage']
-        csv_content.to_csv(cleaned_deaths_cases)
-        pd.read_csv(cleaned_deaths_cases).to_json(destination_deaths_cases)
+    csv_content = pd.read_csv(source_deaths_cases)
+    csv_content.columns = ['age','deaths','percentage']
+    csv_content.to_csv(cleaned_deaths_cases)
+    pd.read_csv(cleaned_deaths_cases).to_json(destination_deaths_cases)
 
-        print('Got new stats')
-        f.close()
-    else:
-        f.close()
-        print('File was a 404')
-        sys.exit()
+    print('Got new stats')
+    f.close()
+    
 
 
 

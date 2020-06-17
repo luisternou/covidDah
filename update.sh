@@ -1,6 +1,6 @@
 #!/bin/bash
 echo -e "\e[1;31m Please be aware that during the update the 
-entire KirEx plattform is not available \e[0m" 
+entire covidDash plattform is not available \e[0m" 
 
 read -r -p "Are you sure? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]

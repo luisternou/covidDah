@@ -10,6 +10,8 @@
  
 let total_confirmed = document.currentScript.getAttribute('total_confirmed');
 
+let total_active = document.currentScript.getAttribute('total_active');
+
 let total_recovered = document.currentScript.getAttribute('total_recovered');
 
 let total_death = document.currentScript.getAttribute('total_death');
@@ -173,16 +175,86 @@ latest_provinces_confirmed = JSON.parse(latest_provinces_confirmed)
   });
 
 
-  // The Calender
-  $('#calendar').datetimepicker({
-    format: 'L',
-    inline: true
-  })
 
-  // SLIMSCROLL FOR CHAT WIDGET
-  $('#chat-box').overlayScrollbars({
-    height: '250px'
-  })
+// Active Cases Chart
+  
+
+  var salesGraphChartCanvas = $('#active-chart').get(0).getContext('2d');
+  
+let total_active_array = total_active.split(',');
+
+
+
+
+
+for (let index = 0; index < total_active_array.length; index++) {
+  total_active_array[index] = parseInt(total_active_array[index]);
+  
+}
+
+  var salesGraphChartData = {
+    labels  : clean_dates,
+    datasets: [
+      {
+        label               : 'Active Cases',
+        fill                : false,
+        borderWidth         : 2,
+        lineTension         : 0,
+        spanGaps : true,
+        borderColor         : '#efefef',
+        pointRadius         : 3,
+        pointHoverRadius    : 7,
+        pointColor          : '#efefef',
+        pointBackgroundColor: '#efefef',
+        data                : total_active_array
+      }
+    ]
+  }
+
+  var salesGraphChartOptions = {
+    maintainAspectRatio : false,
+    responsive : true,
+    legend: {
+      display: false,
+    },
+    scales: {
+      xAxes: [{
+        ticks : {
+          fontColor: '#efefef',
+        },
+        gridLines : {
+          display : false,
+          color: '#efefef',
+          drawBorder: false,
+        }
+      }],
+      yAxes: [{
+        ticks : {
+          stepSize: 5000,
+          fontColor: '#efefef',
+        },
+        gridLines : {
+          display : true,
+          color: '#efefef',
+          drawBorder: false,
+        }
+      }]
+    },
+        legend: {
+      display: true
+    }
+  }
+
+  // This will get the first returned node in the jQuery collection.
+  var salesGraphChart = new Chart(salesGraphChartCanvas, { 
+      type: 'line', 
+      data: salesGraphChartData, 
+      options: salesGraphChartOptions
+    }
+  )
+
+
+
 
   /* Chart.js Charts */
   // Sales chart

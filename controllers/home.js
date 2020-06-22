@@ -50,6 +50,18 @@ module.exports = {
         return allConfirmedCasses;
       } 
 
+      function getAllActiveCases(object)
+      {
+        
+        let allActiveCasses = [];
+       for (let index = 0; index < object.length; index++) {
+         allActiveCasses.push(object[index]['Active']);
+ 
+       }
+
+        return allActiveCasses;
+      } 
+
          function getAllRecovered(object)
       {
         
@@ -144,6 +156,8 @@ confirmed_cases_json = JSON.stringify(confirmed_cases_json)
       
     let all_confirmed_cases = await getAllConfirmedCases(summary);
 
+    let all_active_cases = await getAllActiveCases(summary);
+
     let all_recovered_cases = await getAllRecovered(summary);
 
     let all_death_cases = await getAllDeaths(summary);
@@ -215,6 +229,7 @@ confirmed_cases_json = JSON.stringify(confirmed_cases_json)
         lockdown,
         lockdown_colour,
         all_confirmed_cases,
+        all_active_cases,
         all_recovered_cases,
         all_death_cases,
         title

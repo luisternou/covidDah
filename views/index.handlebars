@@ -63,6 +63,7 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js" deaths = "{{latest_data.deaths}}" recoveries = "{{latest_data.recovered}}"
 provinces_confirmed = {{confirmed_cases_json}} total_confirmed = {{all_confirmed_cases}}
+total_active = {{all_active_cases}}
 total_recovered = {{all_recovered_cases}} total_death = {{all_death_cases}}></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
@@ -540,21 +541,15 @@ total_recovered = {{all_recovered_cases}} total_death = {{all_death_cases}}></sc
               <div class="card-header border-0">
 
                 <h3 class="card-title">
-                  <i class="far fa-calendar-alt"></i>
-                  Calendar
+                  <i class="ion ion-person-add"></i>
+                  Active Cases
                 </h3>
                 <!-- tools card -->
                 <div class="card-tools">
                   <!-- button with a dropdown -->
                   <div class="btn-group">
-                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
-                      <i class="fas fa-bars"></i></button>
-                    <div class="dropdown-menu" role="menu">
-                      <a href="#" class="dropdown-item">Add new event</a>
-                      <a href="#" class="dropdown-item">Clear events</a>
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item">View calendar</a>
-                    </div>
+                    
+                 
                   </div>
                   <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
@@ -568,7 +563,7 @@ total_recovered = {{all_recovered_cases}} total_death = {{all_death_cases}}></sc
               <!-- /.card-header -->
               <div class="card-body pt-0">
                 <!--The calendar -->
-                <div id="calendar" style="width: 100%"></div>
+                <canvas class="chart" id="active-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
               </div>
               <!-- /.card-body -->
             </div>
